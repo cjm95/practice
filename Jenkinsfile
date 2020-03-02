@@ -23,31 +23,36 @@ terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/wo
 
     stage('IGW,NAT') {
       steps {
-        sh 'terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/IGW,NAT'
+        sh '''cd /var/lib/jenkins/workspace/
+terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/IGW,NAT'''
       }
     }
 
     stage('Route Table') {
       steps {
-        sh 'terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/Route Table'
+        sh '''cd /var/lib/jenkins/workspace/
+terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/Route Table'''
       }
     }
 
     stage('ACL') {
       steps {
-        sh 'terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/ACL'
+        sh '''cd /var/lib/jenkins/workspace/
+terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/ACL'''
       }
     }
 
     stage('Security Group') {
       steps {
-        sh 'terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/Security Group'
+        sh '''cd /var/lib/jenkins/workspace/
+terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/Security Group'''
       }
     }
 
     stage('Destroy') {
       steps {
-        sh 'terraform destroy -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/Destroy'
+        sh '''cd /var/lib/jenkins/workspace/
+terraform destroy -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/Destroy'''
       }
     }
 
