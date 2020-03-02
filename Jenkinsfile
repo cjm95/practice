@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('infra') {
       steps {
-        git(url: 'https://github.com/cjm95/practice', credentialsId: 'cjm95')
+        git(url: 'https://github.com/cjm95/practice.git', credentialsId: 'cjm95')
       }
     }
 
