@@ -17,7 +17,7 @@ terraform init -lock=false /var/lib/jenkins/workspace/practice_master'''
     stage('Vpc,Subnet') {
       steps {
         sh '''cd /var/lib/jenkins/workspace
-terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/Vpc,Subnet'''
+terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/Vpc,Subnet'''
       }
     }
 
