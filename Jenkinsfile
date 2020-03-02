@@ -31,7 +31,7 @@ terraform apply -auto-approve -lock=false  -var-file=var.json /var/lib/jenkins/w
     stage('Route Table') {
       steps {
         sh '''cd /var/lib/jenkins/workspace/
-terraform apply -auto-approve -lock=false  -var-file=var.json /var/lib/jenkins/workspace/practice_master/Route Table'''
+terraform apply -auto-approve -var-file=var.json /var/lib/jenkins/workspace/practice_master/Route Table'''
       }
     }
 
