@@ -3,8 +3,8 @@
 provider "aws" {
     profile ="aws_provider"
     region = var.my_region
-    access_key =var.aws_access_key
-    secret_key = var.aws_secret_key
+    # access_key =var.aws_access_key
+    # secret_key = var.aws_secret_key
 }
 // VPC 가상 네트워크 설정
 resource "aws_vpc" "CRBS2-vpc" {
