@@ -21,5 +21,12 @@ terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/wo
       }
     }
 
+    stage('destroy') {
+      steps {
+        sh '''cd /var/lib/jenkins/workspace
+terraform destroy -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master'''
+      }
+    }
+
   }
 }
