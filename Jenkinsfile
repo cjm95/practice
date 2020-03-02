@@ -9,14 +9,14 @@ pipeline {
 
     stage('init') {
       steps {
-        sh '''cd /var/lib/jenkins/workspace/
+        sh '''cd /var/lib/jenkins/workspace/practice_master
 terraform init -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice'''
       }
     }
 
     stage('apply') {
       steps {
-        sh '''cd /var/lib/jenkins/workspace/
+        sh '''cd /var/lib/jenkins/workspace/practice_master
 terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice'''
       }
     }
