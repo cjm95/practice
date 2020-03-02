@@ -17,42 +17,43 @@ terraform init -lock=false /var/lib/jenkins/workspace/practice_master'''
     stage('Vpc,Subnet') {
       steps {
         sh '''cd /var/lib/jenkins/workspace
-terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/Vpc,Subnet'''
+./key.sh
+terraform apply -auto-approve -lock=false /var/lib/jenkins/workspace/practice_master/Vpc,Subnet'''
       }
     }
 
     stage('IGW,NAT') {
       steps {
         sh '''cd /var/lib/jenkins/workspace/
-terraform apply -auto-approve -lock=false  -var-file=var.json /var/lib/jenkins/workspace/practice_master/IGW,NAT'''
+terraform apply -auto-approve -lock=false /var/lib/jenkins/workspace/practice_master/IGW,NAT'''
       }
     }
 
     stage('Route Table') {
       steps {
         sh '''cd /var/lib/jenkins/workspace/
-terraform apply -auto-approve -var-file=var.json /var/lib/jenkins/workspace/practice_master/Route Table'''
+terraform apply -auto-approve /var/lib/jenkins/workspace/practice_master/Route Table'''
       }
     }
 
     stage('ACL') {
       steps {
         sh '''cd /var/lib/jenkins/workspace/
-terraform apply -auto-approve -lock=false  -var-file=var.json /var/lib/jenkins/workspace/practice_master/ACL'''
+terraform apply -auto-approve -lock=false /var/lib/jenkins/workspace/practice_master/ACL'''
       }
     }
 
     stage('Security Group') {
       steps {
         sh '''cd /var/lib/jenkins/workspace/
-terraform apply -auto-approve -lock=false  -var-file=var.json /var/lib/jenkins/workspace/practice_master/Security Group'''
+terraform apply -auto-approve -lock=false /var/lib/jenkins/workspace/practice_master/Security Group'''
       }
     }
 
     stage('Destroy') {
       steps {
         sh '''cd /var/lib/jenkins/workspace/
-terraform destroy -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master/Destroy'''
+terraform destroy -auto-approve -lock=false /var/lib/jenkins/workspace/practice_master/Destroy'''
       }
     }
 
