@@ -24,7 +24,8 @@ terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/wo
     stage('Check') {
       steps {
         sh '''cd /var/lib/jenkins/workspace/
-terraform output > id.txt'''
+terraform output > id.txt
+sed \'/ /\' id.txt'''
         sh '''cd /var/lib/jenkins/workspace/
 cat key.sh id.txt > ids.sh
 chmod +x ids.sh'''
