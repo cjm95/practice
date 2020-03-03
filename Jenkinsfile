@@ -35,10 +35,11 @@ cat key.sh newid.txt > ids.sh
 chmod +x ids.sh
 cat ids.sh cli.sh > script.sh
 chmod +x script.sh'''
-        withAWS ( region : 'ap-northeast-2' , credentials : 'team2' ) {
-        sh '''cd /var/lib/jenkins/workspace/
+        withAWS(region: 'ap-northeast-2', credentials: 'team2') {
+          sh '''cd /var/lib/jenkins/workspace/
 ./script.sh'''
         }
+
       }
     }
 
