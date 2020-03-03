@@ -598,10 +598,48 @@ resource "aws_security_group_rule" "private-egress-MySQL" {
   security_group_id = aws_security_group.CRBS2-security_group-private.id
 }
 
+# =========================================================AMI=======================================================
+data "aws_ami" "Bastion-ami" {
+  most_recent = true
+  filter {
+    name = "name"
+    values = ["Bastion"]
+  }
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+  owners = ["479011694316"] 
+}
+data "aws_ami" "UI-ami" {
+  most_recent = true
+  filter {
+    name = "name"
+    values = ["public-a"]
+  }
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+  owners = ["479011694316"] 
+}
+data "aws_ami" "API-ami" {
+  most_recent = true
+  filter {
+    name = "name"
+    values = ["private-a"]
+  }
+  filter {
+    name = "virtualization-type"
+    values = ["hvm"]
+  }
+  owners = ["479011694316"] 
+}
+
 # ====================================================create server===================================================
 
 resource "aws_instance" "crbs-bastion" {
-  ami                         = "${var.bastion-ami}"
+  ami                         = "${data.aws_ami.Bastion-ami.id}"
   availability_zone           = var.my_az1
   instance_type               = "t2.micro"
   key_name                    = var.key_name
@@ -617,7 +655,7 @@ resource "aws_instance" "crbs-bastion" {
 # CRBS2-public UI 인스턴스 설정
 resource "aws_instance" "CRBS2-public-a" {
   instance_type               = "t2.micro"
-  ami                         = var.ui_ami_id-a
+  ami                         = "${data.aws_ami.UI-ami.id}"
   key_name                    = var.key_name
   vpc_security_group_ids      = ["${aws_security_group.CRBS2-security_group-public.id}"]
   subnet_id                   = aws_subnet.CRBS2-subnet-public-a.id
@@ -629,7 +667,7 @@ resource "aws_instance" "CRBS2-public-a" {
 }
 resource "aws_instance" "CRBS2-public-c" {
   instance_type             = "t2.micro"
-    ami                     = var.ui_ami_id-c
+    ami                     = "${data.aws_ami.UI-ami.id}"
     key_name                = var.key_name
     vpc_security_group_ids  = ["${aws_security_group.CRBS2-security_group-public.id}"]
     subnet_id               = aws_subnet.CRBS2-subnet-public-c.id
@@ -643,7 +681,7 @@ resource "aws_instance" "CRBS2-public-c" {
 # CRBS2-public API 인스턴스 설정
 resource "aws_instance" "CRBS2-private-a" {
   instance_type               = "t2.micro"
-  ami                         = var.api_ami_id-a
+  ami                         = "${data.aws_ami.API-ami.id}"
   key_name                    = var.key_name
   vpc_security_group_ids      = ["${aws_security_group.CRBS2-security_group-private.id}"]
   subnet_id                   = aws_subnet.CRBS2-subnet-private-a.id
@@ -654,7 +692,7 @@ resource "aws_instance" "CRBS2-private-a" {
 }
 resource "aws_instance" "CRBS2-private-c" {
   instance_type             = "t2.micro"
-    ami                     = var.api_ami_id-c
+    ami                     = "${data.aws_ami.API-ami.id}"
     key_name                = var.key_name
     vpc_security_group_ids  = ["${aws_security_group.CRBS2-security_group-private.id}"]
     subnet_id               = aws_subnet.CRBS2-subnet-private-c.id
