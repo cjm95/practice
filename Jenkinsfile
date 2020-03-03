@@ -26,11 +26,15 @@ terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/wo
         sh '''cd /var/lib/jenkins/workspace/
 terraform output > id.txt
 sed \'s/ //g\' id.txt > newid.txt'''
-        sh '''cd /var/lib/jenkins/workspace/
+        sh '''cd /var/lib/jenkins/workspace/practice_master
+cp key.sh /var/lib/jenkins/workspace
+cp clie.sh /var/lib/jenkins/workspace
 cat key.sh newid.txt > ids.sh
-chmod +x ids.sh'''
+chmod +x ids.sh
+cat ids.sh cli.sh > script.sh
+chmod +x script.sh'''
         sh '''cd /var/lib/jenkins/workspace/
-cat ./ids.sh'''
+cat ./script.sh'''
       }
     }
 
