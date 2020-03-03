@@ -599,18 +599,6 @@ resource "aws_security_group_rule" "private-egress-MySQL" {
 }
 
 # =========================================================AMI=======================================================
-data "aws_ami" "default" {
-  most_recent = true
-  filter {
-    name = "platform"
-    values = ["Other Linux"]
-  }
-  filter {
-    name = "virtualization-type"
-    values = ["hvm"]
-  }
-  owners = ["amazon"] 
-}
 data "aws_ami" "Bastion-ami" {
   most_recent = true
   filter {
@@ -627,8 +615,7 @@ data "aws_ami" "UI-ami" {
   most_recent = true
   filter {
     name = "name"
-    # values = ["public-a"]
-    values = ["public"]
+    values = ["public-a"]
   }
   filter {
     name = "virtualization-type"
@@ -640,8 +627,7 @@ data "aws_ami" "API-ami" {
   most_recent = true
   filter {
     name = "name"
-    # values = ["private-a"]
-      values = ["private"]
+    values = ["private-a"]
   }
   filter {
     name = "virtualization-type"
