@@ -45,5 +45,12 @@ chmod +x script.sh'''
       }
     }
 
+    stage('Destroy') {
+      steps {
+        sh '''cd /var/lib/jenkins/workspace
+terraform destroy -lock=false -var-file=var.json /var/lib/jenkins/workspace/practice_master'''
+      }
+    }
+
   }
 }
