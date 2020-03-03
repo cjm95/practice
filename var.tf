@@ -36,21 +36,21 @@ variable "my_az2" {
     type    = string
     default = "ap-northeast-2c"
 }
-# variable "api_ami_id-a" {
-#     type    = string
+variable "api_ami_id" {
+    type    = string
 #     # default = "{{api_ami_id}}"
 #     default = "ami-0214414f047aea460"
-# }
+}
 # variable "api_ami_id-c" {
 #     type    = string
 #     # default = "{{api_ami_id}}"
 #     default = "ami-0cbdbc595049d3731"
 # }
-# variable "ui_ami_id-a" {
-#     type    = string
+variable "ui_ami_id" {
+    type    = string
 #     # default = "{{ui_ami_id}}"
 #     default = "ami-0c8ee51f1770990ed"
-# }
+}
 # variable "ui_ami_id-c" {
 #     type    = string
 #     # default = "{{ui_ami_id}}"
