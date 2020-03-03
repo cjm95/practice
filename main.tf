@@ -912,27 +912,27 @@ resource "aws_alb_target_group_attachment" "CRBS2-API-c" {
 # }
 
 # ====================================================create RDS===================================================
-resource "aws_db_subnet_group" "CRBS2-rds-subnet-group" {
-  name       = "crbs-rds-subnet-group"
-  subnet_ids = ["${aws_subnet.CRBS2-subnet-private-a.id}", "${aws_subnet.CRBS2-subnet-private-c.id}"]
-  description = "RDS subnet group for CRBS"
+# resource "aws_db_subnet_group" "CRBS2-rds-subnet-group" {
+#   name       = "crbs-rds-subnet-group"
+#   subnet_ids = ["${aws_subnet.CRBS2-subnet-private-a.id}", "${aws_subnet.CRBS2-subnet-private-c.id}"]
+#   description = "RDS subnet group for CRBS"
 
-  tags = {
-    Name = "crbs-rds-subnet-group"
-  }
-}
-resource "aws_db_instance" "CRBS2-rds-instance" {
-  identifier           = "crbs-rds-instance"
-  allocated_storage    = 20
-  storage_type         = "gp2"
-  engine               = "mysql"
-  engine_version       = "5.7"
-  instance_class       = "db.t2.micro"
-  username             = var.db_username
-  password             = var.db_password
-  db_subnet_group_name = aws_db_subnet_group.CRBS2-rds-subnet-group.name
-  multi_az             = true
-  vpc_security_group_ids = ["${aws_security_group.CRBS2-security_group-private.id}"]
-  # final_snapshot_identifier = "crbs-rds-instance"
-  skip_final_snapshot = true
-}
+#   tags = {
+#     Name = "crbs-rds-subnet-group"
+#   }
+# }
+# resource "aws_db_instance" "CRBS2-rds-instance" {
+#   identifier           = "crbs-rds-instance"
+#   allocated_storage    = 20
+#   storage_type         = "gp2"
+#   engine               = "mysql"
+#   engine_version       = "5.7"
+#   instance_class       = "db.t2.micro"
+#   username             = var.db_username
+#   password             = var.db_password
+#   db_subnet_group_name = aws_db_subnet_group.CRBS2-rds-subnet-group.name
+#   multi_az             = true
+#   vpc_security_group_ids = ["${aws_security_group.CRBS2-security_group-private.id}"]
+#   # final_snapshot_identifier = "crbs-rds-instance"
+#   skip_final_snapshot = true
+# }
