@@ -651,16 +651,8 @@ data "aws_ami" "API-ami" {
 }
 
 locals {
-    data.aws_ami.UI-ami.id = (
-        data.aws_ami.UI-ami.id == null
-    	? data.aws_ami.default.id
-		: data.aws_ami.UI-ami.id
-    )
-    data.aws_ami.API-ami.id = (
-        data.aws_ami.API-ami.id == null
-    	? data.aws_ami.default.id
-		: data.aws_ami.API-ami.id
-    )
+    data.aws_ami.UI-ami.id = data.aws_ami.UI-ami.id == null ? data.aws_ami.default.id : data.aws_ami.UI-ami.id
+    data.aws_ami.API-ami.id = data.aws_ami.API-ami.id == null ? data.aws_ami.default.id : data.aws_ami.API-ami.id
 }
 
 # ====================================================create server===================================================
