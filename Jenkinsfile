@@ -26,7 +26,8 @@ terraform apply -auto-approve -lock=false -var-file=var.json /var/lib/jenkins/wo
         sh '''cd /var/lib/jenkins/workspace/
 cat key.sh id.txt > ids.sh
 chmod +x ids.sh'''
-        sh 'cat ./ids.sh'
+        sh '''cd /var/lib/jenkins/workspace/
+cat ./ids.sh'''
       }
     }
 
