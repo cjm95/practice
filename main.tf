@@ -653,7 +653,7 @@ data "aws_ami" "API-ami" {
 # ====================================================create server===================================================
 
 resource "aws_instance" "crbs-bastion" {
-  ami                         = "${data.aws_ami.Bastion-ami.id}""
+  ami                         = "${data.aws_ami.Bastion-ami.id}"
   availability_zone           = var.my_az1
   instance_type               = "t2.micro"
   key_name                    = var.key_name
