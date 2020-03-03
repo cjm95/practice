@@ -29,6 +29,7 @@ sed \'s/ //g\' id.txt > newid.txt'''
         sh '''cd /var/lib/jenkins/workspace/practice_master
 cp key.sh /var/lib/jenkins/workspace
 cp cli.sh /var/lib/jenkins/workspace
+cd /var/lib/jenkins/workspace
 cat key.sh newid.txt > ids.sh
 chmod +x ids.sh
 cat ids.sh cli.sh > script.sh
