@@ -650,11 +650,6 @@ data "aws_ami" "API-ami" {
   owners = ["479011694316"] 
 }
 
-locals {
-    data.aws_ami.UI-ami.id = data.aws_ami.UI-ami.id == null ? data.aws_ami.default.id : data.aws_ami.UI-ami.id
-    data.aws_ami.API-ami.id = data.aws_ami.API-ami.id == null ? data.aws_ami.default.id : data.aws_ami.API-ami.id
-}
-
 # ====================================================create server===================================================
 
 resource "aws_instance" "crbs-bastion" {
