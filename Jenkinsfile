@@ -37,6 +37,7 @@ cat ids.sh cli.sh > script.sh
 chmod +x script.sh'''
         sh '''cd /var/lib/jenkins/workspace/
 ./awsc.sh
+export AWS_DEFAULT_REGION=ap-northeast-2
 ./script.sh'''
       }
     }
